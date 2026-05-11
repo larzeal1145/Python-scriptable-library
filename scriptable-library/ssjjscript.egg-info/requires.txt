@@ -1,5 +1,0 @@
-pyautogui
-opencv-python
-wheel
-keyboard
-mouse
