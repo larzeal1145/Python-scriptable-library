@@ -1,17 +1,17 @@
-        mouse_move_smooth()
+        BasicsFunction
+
+`mouse_move_smooth()`
 
 mouse_move_smooth(100,100,2)
 
 Mouse smooth/relative movement (x-axis, y-axis, required time)
 
-
 Used within the game session
 
 
-        mouse_move()
+`mouse_move()`
 
 The cursor instantly moves to the designated position.
-
 
 mouse_move(500, 500)
 
@@ -20,19 +20,19 @@ The mouse moved instantaneously to the coordinates 500, 500.
 The game may not be usable within the game session, and is mainly used for various directories.
 
 
-        mouse_click()
+`mouse_click()`
 
 mouse click
 
 
 
-         mouse_left_down()
+`mouse_left_down()`
 
 Press the left mouse button
 
 
 
-        mouse_left_up()
+`mouse_left_up()`
 
 Release the left mouse button
 
@@ -42,7 +42,7 @@ The other two keys work on the same principle as well. Use 'right' and 'middle'
 
 
 
-        mouse_wheel()
+`mouse_wheel()`
 
 Every 120 units is regarded as one rotation of the mouse wheel.
 
@@ -50,37 +50,50 @@ Of course, it's fine to input "1" for the time as well.
 
 Positive numbers indicate upward scrolling, while negative numbers indicate the opposite direction.
 
-mouse_wheel(500)
 
-This is the code for scrolling up by 500 units.
-
-        mouse_wheel_up()
+`mouse_wheel_up()`
 
 The roller rolls up one step.
 
-        mouse_wheel_down()
+`mouse_wheel_down()`
 
 The roller rolls down one step.
 
-        key_press()
+
+`key_press()`
 
 key_press(0x41)
 
 Keep pressing the key A continuously.
 
 
-        key_down(0x41)
+`key_down(0x41)`
 
 Press the key A on the keyboard.
 
 
-        key_up(0x41)
+`key_up(0x41)`
 
 Keyboard lifted up A
 
+`take_admin()`
+
+Obtain administrative privileges.
 
 
-        find_photo()
+`is_admin()`
+
+Check whether the program has administrator privileges
+
+`get_admin()`
+
+Check if there is administrator privileges. If not, apply for them.
+
+integrated 'is_admin' and 'take_admin'
+
+        FindTarget
+
+`find_photo()`
 
 find_photo('123123.png')
 
@@ -88,64 +101,74 @@ Search for matching images
 
 Used to be placed in conditional statements, triggering subsequent events upon detecting the corresponding image.
 
+        GetInfo
 
+`check_mouse_left_change()`
 
+Listen to the left mouse button and output "up" and "down"，No signal returns None
 
-        take_admin()
+`check_mouse_right_change()`
 
-Obtain administrative privileges.
+Listen to the right mouse button and output "up" and "down"，No signal returns None
 
+`check_mouse_middle_change()`
 
-        is_admin()
+Listen to the middle mouse button and output "up" and "down"，No signal returns None
 
-Check whether the program has administrator privileges
+`check_wheel_change()`
 
-        check_mouse_left_change()
+Monitor the mouse wheel movement and output "forward", "backward" and "stop"，No signal returns None
 
-Listen to the left mouse button and output "up" and "down"
+`obstructs_check_key()`
 
-        check_mouse_right_change()
+Blocking keyboard monitoring, block the thread until a key state change is detected
 
-Listen to the right mouse button and output "up" and "down"
+`obstructs_check_mouse_left_change()`
 
-        check_mouse_middle_change()
+Blocking listens to the left mouse button and blocks until the state changes to output "up" and "down"
 
-Listen to the middle mouse button and output "up" and "down"
+`obstructs_check_mouse_right_change()`
 
-        check_wheel_change()
+Blocking listens to the right mouse button and blocks until the state changes to output "up" and "down"
 
-Monitor the mouse wheel movement and output "forward", "backward" and "stop".
+`obstructs_check_mouse_middle_change()`
 
-        get_mouse_relative()
+Blocking listens to the middle mouse button and blocks until the state changes to output "up" and "down"
+
+`obstructs_check_wheel_change()`
+
+Blocking monitors the mouse wheel, blocks until scrolling action is detected, output "forward", "backward" and "stop"
+
+`get_mouse_relative()`
 
 Monitor the movement of the mouse and detect it 50 times per second.
 
-        check_key()
+`check_key()`
 
-Monitor the keyboard. You can pass in specific key codes, and then only detect this key. Or no parameters are passed, and the entire keyboard is detected.
+Monitor the keyboard. You can pass in specific key codes, and then only detect this key. Or no parameters are passed, and the entire keyboard is detected. No signal returns None
 
-        enable_fast_relative()
+`enable_fast_relative()`
 
 Enable the quick mouse movement detection. After enabling it, the screen resolution will be obtained and divided into a 30*30 pixel grid. Only when the mouse passes through the grid lines will the movement coordinates be sent back, in order to optimize the program performance.
 
-        disable_fast_relative()
+`disable_fast_relative()`
 
 Disable the quick mouse movement detection, the frequency of returning information is restored, it becomes more accurate but also more laggy.
 
-        dll_injection()
+    DllInjection
+
+`dll_injection()`
 
 It hasn't had any effect yet.
 
-        get_admin()
+        record
 
-Check if there is administrator privileges. If not, apply for them.
-
-integrated 'is_admin' and 'take_admin'
-
-        start_recode()
+`start_recode()`
 
 Record the subsequent output information from the mouse and keyboard and return it in the form of a text document.
 
-        start_replay()
+        replay
+
+`start_replay()`
 
 Replay the specified text document.
