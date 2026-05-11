@@ -1,0 +1,35 @@
+运行后键盘快捷键错乱，疑似读取文档时造成，待测 2026-4-18
+可能无法识别鼠标操作
+
+
+
+小偏差过滤，待做 2026-4-28
+
+
+
+库调用问题        5-2
+
+将小偏差过滤      5-2
+
+None 过滤   在做      2026-5-3
+
+
+需要
+
+def on_scroll(x, y, dx, dy):
+    global _wheel
+    if dy > 0:
+        _wheel = "forward"
+    else:
+        _wheel = "backward"
+
+# 启动监听 一次性
+listener = mouse.Listener(on_scroll=on_scroll)
+listener.daemon = True
+listener.start()
+
+def check_wheel_change():
+    global _wheel
+    res = _wheel
+    _wheel = None  # 清空，防止重复触发
+    return res
