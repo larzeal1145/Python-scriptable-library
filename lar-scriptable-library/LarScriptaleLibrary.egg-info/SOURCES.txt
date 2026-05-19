@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+LarScriptaleLibrary/BasicsFunction.py
+LarScriptaleLibrary/DLLInjection.py
+LarScriptaleLibrary/FindTarget.py
+LarScriptaleLibrary/GetInfo.py
+LarScriptaleLibrary/MouseMoveSmooth.py
+LarScriptaleLibrary/__init__.py
+LarScriptaleLibrary/record.py
+LarScriptaleLibrary/replay.py
+LarScriptaleLibrary/tt2.py
+LarScriptaleLibrary.egg-info/PKG-INFO
+LarScriptaleLibrary.egg-info/SOURCES.txt
+LarScriptaleLibrary.egg-info/dependency_links.txt
+LarScriptaleLibrary.egg-info/requires.txt
+LarScriptaleLibrary.egg-info/top_level.txt
