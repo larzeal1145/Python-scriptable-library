@@ -1,3 +1,166 @@
+将就看吧
+
+--------------------------------------------------------
+
+
+        BasicsFunction
+
+mouse_move()
+
+光标瞬间移动到指定位置。mouse_move (500, 500)
+鼠标瞬间移动到坐标 500, 500。游戏会话内可能无法使用，主要用于各类目录操作。
+对应的是AdvancedFunction的mouse_move_smooth()
+
+mouse_click()
+
+鼠标点击
+
+mouse_left_down()
+
+按住鼠标左键
+
+mouse_left_up()
+
+松开鼠标左键
+
+其他两个按键原理相同，使用 right 和 middle
+
+mouse_wheel()
+
+每 120 个单位视为鼠标滚轮滚动一格。当然时间输入 "1" 也可以。正数表示向上滚动，负数表示向下滚动。
+
+mouse_wheel_up()
+
+滚轮向上滚动一格
+
+mouse_wheel_down()
+
+滚轮向下滚动一格
+
+key_press()
+
+key_press (0x41)持续按住 A 键
+
+key_down()
+
+key_down(0x41)按下键盘 A 键
+
+key_up()
+
+key_up(0x41)松开键盘 A 键
+
+take_admin()
+
+获取管理员权限
+
+is_admin()
+
+检查程序是否拥有管理员权限
+
+get_admin()
+
+检查是否拥有管理员权限，若没有则申请整合了 is_admin 和 take_admin
+
+        AdvancedFunction
+        
+continuous_press()
+
+调用 key_press () 函数并持续执行，无需再输入键码，可直接输入字符串，但不支持 ["] 格式
+
+mouse_move_smooth()
+
+调用 mouse_move () 实现鼠标平滑移动 | 鼠标平滑相对移动| dx_total: 水平总位移| dy_total: 垂直总位移| duration: 总耗时，单位秒| steps: 分多少步移动| 使用默认步数时，若位移≤25 则无法执行
+
+        FindTarget
+        
+find_photo()
+
+find_photo ('123123.png')查找匹配的图片用于条件语句中，检测到对应图片后触发后续事件
+
+get_pixel()
+
+| 获取指定坐标的十六进制颜色码| 参数 -------> x, y
+| 返回格式 -----------------------> #FFFFF
+
+check_color()
+
+| 检查指定坐标像素的颜色码| 参数 -------> x, y, "#FFFFF"
+| 返回格式 ----------------------> True / False
+
+        GetInfo
+        
+check_mouse_left_change()
+
+监听鼠标左键，输出 "up" 和 "down"，无信号返回 None
+
+check_mouse_right_change()
+
+监听鼠标右键，输出 "up" 和 "down"，无信号返回 None
+
+check_mouse_middle_change()
+
+监听鼠标中键，输出 "up" 和 "down"，无信号返回 None
+
+check_wheel_change()
+
+监听鼠标滚轮动作，输出 "forward"、"backward" 和 "stop"，无信号返回 None
+
+obstructs_check_key()
+
+阻塞式键盘监听，阻塞线程直至检测到按键状态改变
+
+obstructs_check_mouse_left_change()
+
+阻塞式监听鼠标左键，阻塞直至状态改变，输出 "up" 和 "down"
+
+obstructs_check_mouse_right_change()
+
+阻塞式监听鼠标右键，阻塞直至状态改变，输出 "up" 和 "down"
+
+obstructs_check_mouse_middle_change()
+
+阻塞式监听鼠标中键，阻塞直至状态改变，输出 "up" 和 "down"
+
+obstructs_check_wheel_change()
+
+阻塞式监听鼠标滚轮，阻塞直至检测到滚动动作，输出 "forward"、"backward" 和 "stop"
+
+get_mouse_relative()
+
+监听鼠标移动，每秒检测 50 次
+
+check_key()
+
+监听键盘，可传入指定键码仅检测该键，或不传参检测整个键盘，无信号返回 None
+
+enable_fast_relative()
+
+启用鼠标快速移动检测，启用后获取屏幕分辨率并划分为 30*30 像素网格，仅鼠标穿过网格线时回传移动坐标，以优化程序性能
+
+disable_fast_relative()
+
+关闭鼠标快速移动检测，恢复信息回传频率，精度更高但更卡顿
+
+        DllInjection
+        
+dll_injection()
+
+目前暂无效果
+
+        record
+        
+start_recode()
+
+录制后续鼠标键盘操作信息，以文本文档形式返回
+
+        replay
+        
+start_replay()
+        
+回放文档
+
+--------------------------------------------------------
+        
         BasicsFunction
 
 `mouse_move_smooth()`
@@ -91,6 +254,21 @@ Check if there is administrator privileges. If not, apply for them.
 
 integrated 'is_admin' and 'take_admin'
 
+        AdvancedFunction
+
+`continuous_press()`
+
+Call the key_press() function and execute it continuously. No longer is it necessary to input the key code; you can directly input the string, but the ["] format is not supported.
+
+`mouse_move_smooth()`
+
+Call mouse_move() to smoothly move the mouse | Smooth relative mouse movement
+| dx_total: Total horizontal displacement
+| dy_total: Total vertical displacement
+| duration: Total time consumed in seconds
+| steps: How many steps to move
+| When the default number of steps is used, if the displacement is <= 25, it cannot be executed
+
         FindTarget
 
 `find_photo()`
@@ -100,6 +278,18 @@ find_photo('123123.png')
 Search for matching images
 
 Used to be placed in conditional statements, triggering subsequent events upon detecting the corresponding image.
+
+`get_pixel()`
+
+| Obtain the hexadecimal color code for a specific coordinate 
+| param -------> x, y
+| Return format -----------------------> [C] x y #FFFFF
+
+`check_color()`
+
+|Check the color code of a specific coordinate pixel 
+| param -------> x, y, "#FFFFF"
+| Return format ----------------------> True / False
 
         GetInfo
 
@@ -155,7 +345,7 @@ Enable the quick mouse movement detection. After enabling it, the screen resolut
 
 Disable the quick mouse movement detection, the frequency of returning information is restored, it becomes more accurate but also more laggy.
 
-    DllInjection
+        DllInjection
 
 `dll_injection()`
 
